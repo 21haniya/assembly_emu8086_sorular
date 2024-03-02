@@ -1,57 +1,34 @@
 
-; You may customize this and other start-up templates; 
-; The location of this template is c:\emu8086\inc\0_com_template.txt
 
-org 100h
-
-LEA BX, sayilar
-LEA BP, sayilar2
-
-MOV CX, 4
-MOV SI, 0
-MOV DI, 3
+;SORU
+;sayilar=2,4,6,3 dizisindeki her bir elemani 1 
+;arttirarak sayilar2 dizisine tersten aktaran kodu yaziniz
 
 
-dongu:
+org 100h 
 
-MOV AL, 0
-MOV AL, [BX+SI]
-INC AL
-MOV [BP+DI],AL
+MOV CX,4
+MOV SI,0
+MOV DI,3 
+
+dongu: 
+
+MOV AL,0
+MOV BL,0      
+     
+MOV AL, sayilar+SI 
+
+MOV BL,AL 
+INC BL      
+
+MOV sayilar2+DI,BL
 
 INC SI
-DEC DI
+DEC DI  
 
-LOOP dongu
+LOOP dongu 
 
-
-
-;MOV AL, [BX]
-;INC AL
-;MOV [BP+3],AL 
-
-
-;MOV AL, [BX+1]
-;INC AL
-;MOV [BP+2],AL
-
-
-;MOV AL, [BX+2]
-;INC AL
-;MOV [BP+1],AL 
-
-
-
-;MOV AL, [BX+3]
-;INC AL
-;MOV [BP],AL
-
-
-
-
-
-ret
-
-sayilar db 2,4,6,3 
-sayilar2 db 4 dup(?)
+ret 
+sayilar db 2,4,6,3
+sayilar2 db 4 dup(?) 
 
